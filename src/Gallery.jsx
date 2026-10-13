@@ -32,7 +32,7 @@ export default function Gallery() {
         {pieces.filter(piece => category === 'All' || piece[2] === category).map(piece => (
           <button key={piece[0]} onClick={() => open(piece)} className="group text-left rounded-2xl overflow-hidden border border-gold/25 bg-cream shadow-sm hover:shadow-lg transition-shadow" aria-label={`View ${piece[1]}`}>
             <div className="aspect-[3/4] bg-[#F1EBE0] p-2">
-              <img src={`/photos/${piece[0]}.png`} alt={piece[1]} loading="lazy" decoding="async" className="w-full h-full object-contain rounded-xl" />
+              <img src={`./photos/${piece[0]}.png`} alt={piece[1]} loading="lazy" decoding="async" className="w-full h-full object-contain rounded-xl" />
             </div>
             <div className="px-5 py-5"><p className="text-xs uppercase tracking-[.18em] text-crimson mb-2">{piece[2]}</p><h3 className="font-serif text-xl text-forest">{piece[1]}</h3><p className="text-sm text-ink/60 mt-2">View details ↗</p></div>
           </button>
@@ -40,7 +40,7 @@ export default function Gallery() {
       </div>
       <dialog ref={dialog} className="photo-dialog rounded-2xl bg-cream p-4 text-ink" aria-label={selected?.[1] || 'Collection photo'} onClick={e => { if (e.target === dialog.current) dialog.current.close() }}>
         <div className="flex items-center justify-between gap-4 mb-3"><h2 className="font-serif text-lg">{selected?.[1]}</h2><button autoFocus onClick={() => dialog.current.close()} className="btn-ghost rounded-full">Close</button></div>
-        {selected && <img src={`/photos/${selected[0]}.png`} alt={selected[1]} className="max-h-[75vh] w-full object-contain" />}
+        {selected && <img src={`./photos/${selected[0]}.png`} alt={selected[1]} className="max-h-[75vh] w-full object-contain" />}
       </dialog>
     </Wrap>
   )

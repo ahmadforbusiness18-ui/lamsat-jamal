@@ -45,7 +45,7 @@ export const Hero = () => (
         <a href="#gallery" className="btn mt-9 rounded-full">Shop the Collection</a>
       </div>
       <div className="relative max-w-sm w-full mx-auto p-3 border border-gold/50 rounded-t-full bg-cream shadow-xl">
-        <img src="/photos/wedding-hoop.png" alt="Floral wedding embroidery hoop with a personalised date" fetchPriority="high" className="w-full rounded-t-full" />
+        <img src="./photos/wedding-hoop.png" alt="Floral wedding embroidery hoop with a personalised date" fetchPriority="high" className="w-full rounded-t-full" />
         <p className="text-center text-xs uppercase tracking-[.22em] text-crimson py-4">Made with love · Lamsat Jamal</p>
       </div>
     </div>

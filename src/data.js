@@ -6,12 +6,12 @@ export const CURRENCIES = {
   GBP: { sym: '£', rate: 0.78, name: 'British pounds' },
   EGP: { sym: 'E£', rate: 48, name: 'Egyptian pounds' },
 }
-// Real photos: put files in public/photos/ and add image: '/photos/name.jpg'
+// Real photos: put files in public./photos/ and add image: './photos/name.jpg'
 export const PRODUCTS = [
-  { id:'heritage-cushion', name:'Heritage Cushion', price:110, image:'/photos/heritage-cushion.png', seed:0, desc:'A cushion cover embroidered by hand across the front.' },
+  { id:'heritage-cushion', name:'Heritage Cushion', price:110, image:'./photos/heritage-cushion.png', seed:0, desc:'A cushion cover embroidered by hand across the front.' },
   { id:'star-pouch', name:'Eight-Point Star Pouch', price:46, seed:1, desc:'Linen pouch with a cross-stitched star in red and green.' },
   { id:'linked-chain', name:'Hand-Linked Chain', price:62, seed:2, desc:'Fine hand-linked chain with a stitched charm.' },
-  { id:'framed-motif', name:'Framed Tatreez Motif', price:125, image:'/photos/palestine-frame.png', seed:3, desc:'One large motif, framed and ready to hang.' },
+  { id:'framed-motif', name:'Framed Tatreez Motif', price:125, image:'./photos/palestine-frame.png', seed:3, desc:'One large motif, framed and ready to hang.' },
 ]
 export const TESTIMONIALS = [ // sample text: replace with real customer words
   { q:'The stitching is even and careful. It feels like a piece that belongs to a family.', n:'Layla, London' },
