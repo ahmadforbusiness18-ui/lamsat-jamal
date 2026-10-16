@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tatreez, Wrap, Heading } from './Tatreez'
 import { PRODUCTS } from './data'
+import { Icon } from './Sections'
 
 function Art({ p, className }) {
   return p.image
@@ -9,29 +10,22 @@ function Art({ p, className }) {
     : <Tatreez seed={p.seed} className={className} />
 }
 
-export function Featured({ fmt, onAdd }) {
-  return (
-    <Wrap id="shop">
-      <Heading title="Featured pieces" sub="Small collection, each piece stitched to order." />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-        {PRODUCTS.map(p => (
-          <article key={p.id} className="group">
-            <div className="linen stitch-frame relative aspect-[4/5] overflow-hidden grid place-items-center">
-              <Art p={p} className="w-3/5 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6" />
-            </div>
-            <h3 className="mt-4 font-serif text-2xl font-bold text-crimson">{p.name}</h3>
-            <p className="mt-1 text-sm text-ink/70 leading-relaxed">{p.desc}</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-serif text-xl font-bold">{fmt(p.price)}</span>
-              <button onClick={() => onAdd(p.id)} className="btn-ghost" aria-label={`Add ${p.name} to cart`}>Add to cart</button>
-            </div>
-          </article>
-        ))}
-      </div>
-    </Wrap>
-  )
+export function Featured({ fmt, onAdd, query = '' }) {
+  const showcase = [
+    { id: 'wedding-showcase', name: 'Custom Couple Embroidery Hoop', desc: 'Wedding keepsake', image: './photos/wedding-hoop.png', price: null },
+    PRODUCTS[0], PRODUCTS[3],
+    { id: 'pearl-showcase', name: 'Pearl & Rose Phone Charm', desc: 'Beaded accessory', image: './photos/pearl-rose-charm.png', price: null },
+  ]
+  const products = (query ? PRODUCTS.concat(showcase.filter(p => p.price === null)) : showcase).filter(p => `${p.name} ${p.desc}`.toLowerCase().includes(query.toLowerCase()))
+  return <section id="shop" className="featured-section">
+    <div className="featured-heading"><h2>Featured Products</h2><a href="#gallery">View All Pieces <Icon name="arrow" /></a></div>
+    <div className="product-grid">{products.map(p => <article key={p.id} className="product-card">
+      <div className="product-image"><Art p={p} className="w-1/3" /></div>
+      <div className="product-details"><h3>{p.name}</h3>{p.price === null ? <><a href="#gallery">Explore this piece</a><a className="product-add" href="#gallery" aria-label={`Explore ${p.name}`}><Icon name="arrow" /></a></> : <><p>{fmt(p.price)}</p><button className="product-add" onClick={() => onAdd(p.id)} aria-label={`Add ${p.name} to cart`}><Icon name="bag" /></button></>}</div>
+    </article>)}</div>
+    {products.length === 0 && <p className="py-10 text-center">No featured pieces match “{query}”. Try another search.</p>}
+  </section>
 }
-
 export function CartDrawer({ open, onClose, lines, setQty, onDone, fmt }) {
   const [step, setStep] = useState('bag')
   const total = lines.reduce((s, l) => s + l.p.price * l.qty, 0)
@@ -94,3 +88,4 @@ export function CartDrawer({ open, onClose, lines, setQty, onDone, fmt }) {
     </AnimatePresence>
   )
 }
+

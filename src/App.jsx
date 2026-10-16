@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { MotionConfig } from 'framer-motion'
 import { PRODUCTS, CURRENCIES } from './data'
-import { Navbar, Hero, Story, Craft, Trust, Footer } from './Sections'
+import { Navbar, Hero, Story, Benefits, Footer } from './Sections'
 import { Featured, CartDrawer } from './Shop'
 import Gallery from './Gallery'
 
 export default function App() {
+  const [query, setQuery] = useState('')
   const [cur, setCur] = useState('USD')
   const [cart, setCart] = useState({})
   const [open, setOpen] = useState(false)
@@ -17,10 +18,11 @@ export default function App() {
   const count = lines.reduce((s, l) => s + l.qty, 0)
   return (
     <MotionConfig reducedMotion="user">
-      <Navbar count={count} onCart={() => setOpen(true)} cur={cur} setCur={setCur} />
-      <main><Hero /><Gallery /><Featured fmt={fmt} onAdd={add} /><Story /><Craft /><Trust /></main>
+      <Navbar count={count} onCart={() => setOpen(true)} cur={cur} setCur={setCur} query={query} setQuery={setQuery} />
+      <main><Hero /><Benefits /><Featured fmt={fmt} onAdd={add} query={query} /><Story /><Gallery /></main>
       <Footer />
       <CartDrawer open={open} onClose={() => setOpen(false)} lines={lines} setQty={setQty} onDone={() => setCart({})} fmt={fmt} />
     </MotionConfig>
   )
 }
+
