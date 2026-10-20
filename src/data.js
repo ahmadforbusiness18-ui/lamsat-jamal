@@ -1,4 +1,4 @@
-export const BRAND = 'Lamsat Jamal'
+export const BRAND = 'Touch of Beauty'
 export const TAGLINE = 'Palestinian embroidery, stitched by hand.'
 // Prices are in USD. Update the rates below whenever you like.
 export const CURRENCIES = {
@@ -18,4 +18,6 @@ export const TESTIMONIALS = [ // sample text: replace with real customer words
   { q:'I bought the pouch as a gift and kept looking at it. The colours are exactly right.', n:'Hannah, Cairo' },
   { q:'It arrived wrapped like something precious, and it is.', n:'Samira, Dubai' },
 ]
+
+
 
